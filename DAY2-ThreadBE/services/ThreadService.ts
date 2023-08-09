@@ -11,20 +11,23 @@ class ThreadService {
     try {
       const threads = await this.threadRepository.find();
       return res.status(200).json(threads);
-    }catch (err) {
-
+    } catch (err) {
+      return res.status(404).json("Something eror in server");
     }
-   
   }
 
   async findOne(req: Request, res: Response) {
-    const id = parseInt(req.params.id)
-    const threads = await this.threadRepository.findOne({
-      where: {
-        id: id
-      },
-    });
-    return res.status(200).json(threads);
+    try {
+      const id = parseInt(req.params.id);
+      const threads = await this.threadRepository.findOne({
+        where: {
+          id: id,
+        },
+      });
+      return res.status(200).json(threads);
+    } catch {
+      return res.status(404).json("Something eror in fineOne");
+    }
   }
 
   async create(req: Request, res: Response) {
@@ -34,7 +37,7 @@ class ThreadService {
         content: data.content,
         image: data.image,
         post_at: data.post_at,
-        user_id: data.user_id,
+        user: data.user,
       });
       const createdThread = await this.threadRepository.save(thread);
       return res.status(200).json(createdThread);
@@ -44,7 +47,6 @@ class ThreadService {
         .json({ message: "Failed to create thread.", error: error.message });
     }
   }
-  //dsini bikin validasi
 
   async delete(req: Request, res: Response): Promise<Response> {
     const id = parseInt(req.params.id);
@@ -53,19 +55,19 @@ class ThreadService {
       return res.status(200).json(threads);
     } catch (error) {
       return res.status(200).json({
-        message: "err"
-      })
+        message: "err",
+      });
     }
   }
 
   async update(req: Request, res: Response) {
     const id = parseInt(req.params.id);
-    console.log(id)
+    console.log(id);
     const threadz = await this.threadRepository.findOne({
       where: {
-        id: id
-      }
-    })
+        id: id,
+      },
+    });
 
     const data = req.body;
 
@@ -83,4 +85,4 @@ class ThreadService {
   }
 }
 
-export default new ThreadService()
+export default new ThreadService();

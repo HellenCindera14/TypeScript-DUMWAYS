@@ -1,4 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm";
+import { user } from "./user";
+import { Threads } from "./Threads";
+import { replies } from "./replies";
 
 @Entity({ name: "Likes" })
 export class Likes {
@@ -9,5 +12,13 @@ export class Likes {
   userId: string;
 
   @Column()
-  ThreadId: string;
+  Thread: string;
+
+  @ManyToOne(()=> user, (user)=> user.threads)
+  user: user
+  @OneToMany(() => Likes, (Likes)=> Likes.Thread)
+  likes: Likes[];
+
+  @OneToMany(() => replies, (replies)=> replies.Threads)
+  replies:replies[];
 }

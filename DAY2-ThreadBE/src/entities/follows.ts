@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { user } from "./user";
+import { Threads } from "./Threads";
 
 @Entity({ name: "follows" })
 export class follows {
@@ -10,4 +12,10 @@ export class follows {
 
   @Column()
   followedId: number;
+
+  @ManyToOne(() => user, (user) => user.replies)
+  user: user;
+
+  @ManyToOne(() => Threads, (thread) => thread.likes)
+  threads: Threads;
 }

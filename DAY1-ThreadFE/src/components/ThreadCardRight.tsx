@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { Box, Image, Button, Text, Flex } from "@chakra-ui/react";
+import { Box, Image, Button, Text,} from "@chakra-ui/react";
 // import { Link } from "react-router-dom";
 
 interface ThreadCardProps {

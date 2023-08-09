@@ -1,6 +1,9 @@
 import { Thead } from "@chakra-ui/react";
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { Threads } from "./Threads";
+import { replies } from "./replies";
+import { Likes } from "./likes";
+import { follows } from "./follows";
 
 @Entity({ name: "user" })
 export class user {
@@ -20,11 +23,17 @@ export class user {
   password: number;
 
   @Column()
-  profil_picture: number;
+  picture: number;
 
   @Column()
-  Profil_deskcripsi: number;
-}
+  Deskript: number;
 
-// @OneToMany(() => Thead, (thred)) =>thread.user
-// threads: Threads[];
+  //untuk menyambungkan ke database
+  @OneToMany(() => Threads, (thread) => thread.user, {
+    onDelete: "CASCADE",
+  })
+  threads: Threads[];
+  replies: any;
+  likes: any;
+
+}
