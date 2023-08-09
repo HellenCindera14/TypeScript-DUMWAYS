@@ -16,6 +16,7 @@ export class Likes {
 
   @ManyToOne(()=> user, (user)=> user.threads)
   user: user
+  
   @OneToMany(() => Likes, (Likes)=> Likes.Thread)
   likes: Likes[];
 

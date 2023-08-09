@@ -14,8 +14,8 @@ export class Threads {
   @Column()
   image: string;
 
-  @Column({ type: "timestamp" })
-  post_at: number;
+  @Column({type:"timestamp"})
+  post_at: Date;
 
   @Column()
   user: number;

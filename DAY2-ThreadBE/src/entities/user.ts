@@ -16,17 +16,17 @@ export class user {
   @Column()
   fullname: string;
 
-  @Column({ type: "timestamp" })
-  email: Date;
-
-  @Column({})
-  password: number;
+  @Column()
+  email: string;
 
   @Column()
-  picture: number;
+  password: string;
 
   @Column()
-  Deskript: number;
+  picture: string;
+
+  @Column()
+  Deskription: string;
 
   //untuk menyambungkan ke database
   @OneToMany(() => Threads, (thread) => thread.user, {

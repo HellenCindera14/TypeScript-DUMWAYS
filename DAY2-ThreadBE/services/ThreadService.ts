@@ -2,6 +2,7 @@ import { Repository } from "typeorm";
 import { Threads } from "../src/entities/Threads";
 import { AppDataSource } from "../src/data-source";
 import { Request, Response } from "express";
+import { createdThreadScheme } from "../src/utils/validator";
 
 class ThreadService {
   private readonly threadRepository: Repository<Threads> =
@@ -30,9 +31,17 @@ class ThreadService {
     }
   }
 
+  
   async create(req: Request, res: Response) {
     try {
       const data = req.body;
+      const {error} = createdThreadScheme;
+      if (error) {
+        return res.status(200).json({
+          message:"salah cok!"
+        })
+      }
+
       const thread = this.threadRepository.create({
         content: data.content,
         image: data.image,
@@ -47,6 +56,8 @@ class ThreadService {
         .json({ message: "Failed to create thread.", error: error.message });
     }
   }
+
+
 
   async delete(req: Request, res: Response): Promise<Response> {
     const id = parseInt(req.params.id);
