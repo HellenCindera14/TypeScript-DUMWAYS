@@ -61,7 +61,7 @@ const ThreadCardBlog = (props: ThreadCardProps) => {
               height={"200px"}
               alt="Thread"
               borderRadius="30px"
-              mb="5px"
+              mb="10px"
             />
             <Box display="flex" justifyContent="space-between" w="70%">
               <Button

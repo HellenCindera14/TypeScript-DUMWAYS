@@ -17,12 +17,12 @@ const Home = () => {
             return (
               <ThreadCard
                 key={index}
-                author_picture={item.author_picture}
-                author_fullname={item.author_fullname}
-                author_username={item.author_username}
+                author_picture={item.user.author_picture}
+                author_fullname={item.user.author_fullname}
+                author_username={item.user.author_username}
                 posted_at={item.posted_at}
                 content={item.content}
-                image={item.image}
+                image={item.user.image}
                 likes_count={item.likes_count}
                 replies_count={item.replies_count}
                 is_liked={item.is_liked}

@@ -1,27 +1,35 @@
 [
     {
         "id": 1,
-        "author_picture": "https://yt3.ggpht.com/a/AATXAJy2FbKhW8aIWx1fJkTAIb8ZwDIhHSJ7q4169w=s900-c-k-c0xffffffff-no-rj-mo",
-        "author_fullname": "Helen Cindera",
-        "author_username": "Helen",
+        "user" : {
+            "id": 1,
+            "author_picture": "https://yt3.ggpht.com/a/AATXAJy2FbKhW8aIWx1fJkTAIb8ZwDIhHSJ7q4169w=s900-c-k-c0xffffffff-no-rj-mo",
+            "author_fullname": "Helen Cindera",
+            "author_username": "Helen",
+            "email": "helencindera@gmail.com",
+            "password": "123rahasia",
+            "image": "https://pbs.twimg.com/media/Es3tx1ZVkAE0zEK?format=jpg&name=4096x4096"
+          
+        },
         "posted_at": "7h",
         "content": "Aku harus percaya pada diriku sendiri, percaya bahwa aku adalah orang yang mereka percaya.” (Naruto Uzumaki)",
-        "image": "https://pbs.twimg.com/media/Es3tx1ZVkAE0zEK?format=jpg&name=4096x4096",
         "likes_count": 10,
         "replies_count": 5,
         "is_liked": true
     },
     {
         "id": 2,
-        "author_picture": "https://yt3.ggpht.com/a/AATXAJy2FbKhW8aIWx1fJkTAIb8ZwDIhHSJ7q4169w=s900-c-k-c0xffffffff-no-rj-mo",
-        "author_fullname": "Helen Cindera",
-        "author_username": "Helen",
+        "user": {
+            "author_picture": "https://yt3.ggpht.com/a/AATXAJy2FbKhW8aIWx1fJkTAIb8ZwDIhHSJ7q4169w=s900-c-k-c0xffffffff-no-rj-mo",
+            "author_fullname": "Helen Cindera",
+            "author_username": "Helen",
+            "email": "helencindera@gmail.com",
+            "password": "123rahasia",
+            "image": "https://pbs.twimg.com/media/Es3tx1ZVkAE0zEK?format=jpg&name=4096x4096"
+        },
         "posted_at": "2h",
         "content": "Takdir setiap manusia memang telah ditentukan sejak mereka lahir, tetapi dengan kerja keras kita dapat mengalahkan takdir (Naruto Uzumaki)",
-        "image": "https://i.pinimg.com/originals/4e/ae/2c/4eae2c5952565d6ce67cbe5343f8da34.jpg",
         "replies_count": 24,
         "is_liked": true
-
-    
     }
 ]

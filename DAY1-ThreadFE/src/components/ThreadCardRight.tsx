@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { Box, Image, Button, Text,} from "@chakra-ui/react";
+import { Box, Image, Button, Text } from "@chakra-ui/react";
 // import { Link } from "react-router-dom";
 
 interface ThreadCardProps {
@@ -53,27 +53,24 @@ const ThreadCardRight = (props: ThreadCardProps) => {
               mt="-10"
               ml="5%"
             />
-        <Box display="flex">
-            <Box>
-              <Text
-                color="white"
+            <Box display="flex" gap="40%">
+              <Box>
+                <Text color="white" mt="4%" gap="10%" fontSize="15">
+                  HELEN CINDERA
+                </Text>
+              </Box>
+              <Button border="2px solid white"
+                bgColor="#04a51e" 
+                color="white" 
                 mt="4%"
-                gap="10%"
-              >
-                HELEN CINDERA
-              </Text>
+                width="80px"
+                height="30px"
+                marginTop="1%"
+                
+                borderRadius="20%"
+                >Edit Profil
+              </Button>
             </Box>
-            <button>
-              <Text
-                color="white"
-                mt="4%"
-              >
-                Edit Profil
-              </Text>
-            </button>
-        </Box>
-
-         
 
             <Text color={"grey"}>({props.posted_at})</Text>
           </Box>
