@@ -1,21 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { user } from "./user";
-import { Threads } from "./Threads";
+// import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+// import { user } from "./user";
+// import { Threads } from "./Threads";
 
-@Entity({ name: "follows" })
-export class follows {
-  @PrimaryGeneratedColumn()
-  id: number;
+// @Entity({ name: "follows" })
+// export class follows {
+//   @PrimaryGeneratedColumn()
+//   id: number;
 
-  @Column()
-  followerId: number;
+//   @Column()
+//   followerId: number;
 
-  @Column()
-  followedId: number;
+//   @Column()
+//   followedId: number;
 
-  @ManyToOne(() => user, (user) => user.replies)
-  user: user;
+//   @ManyToOne(() => user, (user) => user.replies)
+//   follower: number;
 
-  @ManyToOne(() => Threads, (thread) => thread.likes)
-  threads: Threads;
-}
+//   @ManyToOne(() => Threads, (thread) => thread.likes)
+//   followed: number;
+// }

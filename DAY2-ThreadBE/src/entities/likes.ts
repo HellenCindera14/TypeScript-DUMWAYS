@@ -1,25 +1,20 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm";
-import { user } from "./user";
-import { Threads } from "./Threads";
-import { replies } from "./replies";
+import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne } from "typeorm"
+import { User } from "./user"
+import { Threads } from "./Threads"
 
-@Entity({ name: "Likes" })
-export class Likes {
-  @PrimaryGeneratedColumn()
-  id: number;
+@Entity({name : "likes"})
+export class Like {
 
-  @Column()
-  userId: string;
+    @PrimaryGeneratedColumn()
+    id: number
 
-  @Column()
-  Thread: string;
+    @Column('boolean', {default: false})
+    isLike: boolean = false;
 
-  @ManyToOne(()=> user, (user)=> user.threads)
-  user: user
-  
-  @OneToMany(() => Likes, (Likes)=> Likes.Thread)
-  likes: Likes[];
+    @ManyToOne(()=> User, (user)=> user.likes)
+    user: User
 
-  @OneToMany(() => replies, (replies)=> replies.Threads)
-  replies:replies[];
+    @ManyToOne(()=> Threads, (thread)=> thread.likes)
+    threads: Threads
+
 }

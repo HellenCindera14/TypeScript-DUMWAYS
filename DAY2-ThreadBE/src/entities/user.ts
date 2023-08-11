@@ -1,39 +1,45 @@
-import { Thead } from "@chakra-ui/react";
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { Threads } from "./Threads";
-import { replies } from "./replies";
-import { Likes } from "./likes";
-import { follows } from "./follows";
+import { Entity, PrimaryGeneratedColumn, Column, Timestamp, OneToMany } from "typeorm"
+import { Threads } from "./Threads"
+import { Like } from "./likes"
+import { Reply } from "./replies"
 
-@Entity({ name: "user" })
-export class user {
-  @PrimaryGeneratedColumn()
-  id: number;
+@Entity({name : "users"})
+export class User {
 
-  @Column()
-  username: string;
+    @PrimaryGeneratedColumn()
+    id: number
 
-  @Column()
-  fullname: string;
+    @Column()
+    fullname: string
 
-  @Column()
-  email: string;
+    @Column()
+    username: string
+    
+    @Column()
+    email: string
+    
+    @Column({select : false})
+    password: string
+        
+    @Column({nullable : true})
+    picture: string
 
-  @Column()
-  password: string;
+    @Column({nullable : true})
+    description: string
+    
+    @Column({ type : "timestamp" , default: () => "CURRENT_TIMESTAMP" })
+    created_at: Date 
+    
+    @Column({ type : "timestamp" , default: () => "CURRENT_TIMESTAMP" })
+    updated_at: Date 
 
-  @Column()
-  picture: string;
 
-  @Column()
-  Deskription: string;
+    @OneToMany(() => Threads, (threads)=> threads.user)
+    @OneToMany(() => Like, (likes)=> likes.user)
+    @OneToMany(() => Reply, (replies)=> replies.user)
 
-  //untuk menyambungkan ke database
-  @OneToMany(() => Threads, (thread) => thread.user, {
-    onDelete: "CASCADE",
-  })
-  threads: Threads[];
-  replies: any;
-  likes: any;
 
+    threadses: Threads[];
+    likes: Like[];
+    replies: Reply[];
 }

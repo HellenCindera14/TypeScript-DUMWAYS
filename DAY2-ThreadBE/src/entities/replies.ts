@@ -1,23 +1,19 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { user } from "./user";
-import { Threads } from "./Threads";
+import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne } from "typeorm"
+import { User } from "./user"
+import { Threads } from "./Threads"
 
-@Entity({ name: "replies" })
-export class replies {
-  @PrimaryGeneratedColumn()
-  id: number;
+@Entity({name : "replies"})
+export class Reply {
 
-  @Column()
-  content: string;
+    @PrimaryGeneratedColumn()
+    id: number
 
-  @Column()
-  userId: number;
+    @Column({nullable : true})
+    comment: string
 
-  //menyambungkan ke database
-  @ManyToOne(()=> user, (user)=> user.replies)
-  user: user
 
-  @ManyToOne(()=> Threads, (thread)=> thread.likes)
-  Threads:Threads
+    @ManyToOne(()=> User, (user)=> user.replies)
+    user: User
+    @ManyToOne(()=> Threads, (thread)=> thread.likes)
+    threads: Threads
 }
-
