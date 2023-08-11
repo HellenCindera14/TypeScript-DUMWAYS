@@ -5,7 +5,7 @@ const TombolHomeUp = () => {
   return (
     <>
       <Box mb={4}>
-        <Text fontSize="20" color="white" mb="5%">
+        <Text fontSize="20" color="white" mb="2%">
           Home
         </Text>
         <Box display="flex" gap="15px">

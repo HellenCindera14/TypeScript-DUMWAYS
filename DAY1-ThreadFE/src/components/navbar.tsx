@@ -5,11 +5,9 @@ const Navbar = () => {
   return (
     <GridItem>
       <Box
-        marginLeft={"1em"}
-        marginTop={"2em"}
         display={"flex"}
         flexDirection={"column"}
-        ml="20"
+        ml="5px"
       >
         <Heading
           color={"green.500"}
@@ -19,7 +17,7 @@ const Navbar = () => {
         >
           MY APLICATION
         </Heading>
-        <Box display={"flex"} alignItems="center" mb="4">
+        <Box display={"flex"} alignItems="center" mb="2">
           <FaHome color="white" fontSize="25px" mb="10%" />
           <Text color="white" rowGap={1} ml={3}>
             Home

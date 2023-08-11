@@ -1,5 +1,5 @@
-// import { useState } from "react";
-import { Box, Image, Button, Text } from "@chakra-ui/react";
+import { Box, Image, Button, Text, Stack, Container } from "@chakra-ui/react";
+import { AiFillGithub, AiFillLinkedin, AiFillTwitterCircle } from "react-icons/ai";
 // import { Link } from "react-router-dom";
 
 interface ThreadCardProps {
@@ -18,7 +18,13 @@ interface ThreadCardProps {
 const ThreadCardRight = (props: ThreadCardProps) => {
   return (
     <>
-      <Box border="2px solid white" marginTop="10%" marginRight="10%">
+      <Box
+        border="2px solid white"
+        marginTop="10%"
+        marginRight="10%"
+        borderRadius={"2%"}
+        p="1%"
+      >
         <Box display={"flex"}>
           <Text
             color={"white"}
@@ -32,55 +38,121 @@ const ThreadCardRight = (props: ThreadCardProps) => {
         <Box mb="25px">
           <Image
             src="https://www.desktopbackground.org/download/o/2014/03/26/737495_naruto-logo-ii-by-chief117john-jpg_1600x1280_h.jpg"
-            width={"350px"}
-            height={"120px"}
+            width={"400px"}
+            height={"140px"}
             alt="Thread"
             borderRadius="10px"
             mb="10px"
-            ml="5%"
             mt="2%"
+            mr={"1%"}
           />
 
-          <Box mt="10px" ml="5%">
+          <Stack mt="10px" ml="5%">
             <Image
               src="https://i.imgur.com/ynQwZNxh.jpg"
               alt="Author"
-              width={"50px"}
-              height={"50px"}
+              width={"70px"}
+              height={"70px"}
               borderRadius="50%"
               objectFit="cover"
               mr="8px"
               mt="-10"
               ml="5%"
             />
-            <Box display="flex" gap="40%">
-              <Box>
-                <Text color="white" mt="4%" gap="10%" fontSize="15">
-                  HELEN CINDERA
-                </Text>
-              </Box>
-              <Button border="2px solid white"
-                bgColor="#04a51e" 
-                color="white" 
-                mt="4%"
+          </Stack>
+
+          <Container>
+            <Stack ml="80%">
+              <Button
+                mt="-10"
+                border="2px solid white"
+                bgColor="#04a51e"
+                color="white"
                 width="80px"
                 height="30px"
-                marginTop="1%"
-                
                 borderRadius="20%"
-                >Edit Profil
+              >
+                Edit Profil
               </Button>
-            </Box>
+            </Stack>
+          </Container>
 
-            <Text color={"grey"}>({props.posted_at})</Text>
-          </Box>
-        </Box>
-
-        <Box display="flex" justifyContent="space-between" w="70%">
-          <Button display={"grid"}>Likes</Button>
-          <Button>Replies</Button>
+          <Container>
+            <Stack>
+              <Text color="white" mt="4%" gap="10%" fontSize="15">
+                HELEN CINDERA
+                <Text>"Kita harus lebih kuat dari hari kemarin." (Lee)</Text>
+                <Text>
+                  <Button mr={"2%"} width={"30"} height={"30"} mt="2%">
+                    201 Following
+                  </Button>
+                  <Button mr={"2%"} width={"30"} height={"30"} mt="2%">
+                    71 Followers
+                  </Button>
+                </Text>
+              </Text>
+            </Stack>
+          </Container>
         </Box>
       </Box>
+
+      <Stack
+        border="2px solid white"
+        bg="black"
+        mt="2%"
+        marginTop="10%"
+        marginRight="10%"
+        borderRadius={"5%"}
+        p="1%"
+      >
+        <Text color={"white"}>Saran Teman : </Text>
+        <Stack flexDirection={"row"} justifyContent={"space-between"}>
+          <Box display={"flex"} mt="5px" flexDirection={"row"}>
+            <Image
+              src="https://cdn1.katadata.co.id/media/images/thumb/2021/10/06/Kucing_Bengal-2021_10_06-10_17_15_ad40e6fefe890f0db85dd31bd4d5d0c9_960x640_thumb.jpg"
+              alt="Author"
+              width={"30px"}
+              height={"30px"}
+              borderRadius="full"
+              objectFit="cover"
+              mr="8px"
+            />
+            <Box>
+              <Text color={"white"} fontWeight="bold" mr="5px">
+                Helen Cindera
+              </Text>
+              <Text color={"grey"} mr="5px" fontSize={"12px"}>
+                @Cindera
+              </Text>
+            </Box>
+          </Box>
+
+          <Stack>
+            <Button>Follow</Button>
+          </Stack>
+        </Stack>
+      </Stack>
+
+      <Stack
+        border="2px solid white"
+        bg="black"
+        marginTop="5%"
+        marginRight="10%"
+        borderRadius={"5%"}
+        p="1%"
+      >
+        <Container display={"flex"} m="2" flexDirection={"column"}>
+          <Stack flexDirection={"row"}>
+            <Text color={"white"}>Devloped by Helen Cindera</Text>
+            <Stack flexDirection={"row"}>
+              <Button size={"XS"}><AiFillGithub/></Button>
+              <Button size={"XS"}><AiFillLinkedin/></Button>
+              <Button size={"XS"}><AiFillTwitterCircle/></Button>
+            </Stack>
+          </Stack>
+          <Text color={"white"}>Devloped by Helen Cindera</Text>
+        </Container>
+      </Stack>
     </>
   );
 };

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Box, Image, Button, Text} from "@chakra-ui/react";
+import { Box, Image, Button, Text,} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import TombolHomeUp from "./TombolHomeUp";
+// import { API } from "../lib/api";
 
+//struct
 interface ThreadCardProps {
   id?: number;
   author_picture?: string;
@@ -15,6 +16,19 @@ interface ThreadCardProps {
   replies_count?: number;
   is_liked?: boolean;
 }
+
+// export function ThreadCard() {
+//   const [Threads, setThreads] = useState();
+
+//   async function getThreads() {
+//     const response =await API.get('/threads')
+//     console.log("ini adalah threads", response)
+//   }
+
+//   useEffect(() => (
+//     getThreads()
+//   ),[])
+// }
 
 const ThreadCard = (props: ThreadCardProps) => {
   const [likesCount, setLikesCount] = useState(props.likes_count || 0);
@@ -29,12 +43,11 @@ const ThreadCard = (props: ThreadCardProps) => {
     setIsLiked(!isLiked);
   };
 
-
   return (
     <>
-  <TombolHomeUp />
-      <Box width="150%">
+      <Box>
         <Box fontSize="14px">
+        
           <Box display={"flex"} mt="5px">
             <Image
               src={props.author_picture}
@@ -64,13 +77,12 @@ const ThreadCard = (props: ThreadCardProps) => {
             </Link>
             <Image
               src={props.image}
-              width={"410px"}
-              height={"200px"}
+              objectFit={"fill"}
               alt="Thread"
               borderRadius="10px"
               mb="10px"
             />
-            <Box display="flex" justifyContent="space-between" w="20%" >
+            <Box display="flex" justifyContent="space-between" w="20%">
               <Button
                 onClick={handleLikeClick}
                 colorScheme={isLiked ? "red" : "gray"}
@@ -82,9 +94,9 @@ const ThreadCard = (props: ThreadCardProps) => {
               >
                 {likesCount} Likes
               </Button>
-              <Button width="15%"
-                fontSize="10px"
-                height="20px">{props.replies_count} Replies</Button>
+              <Button width="15%" fontSize="10px" height="20px">
+                {props.replies_count} Replies
+              </Button>
             </Box>
           </Box>
         </Box>
@@ -92,5 +104,4 @@ const ThreadCard = (props: ThreadCardProps) => {
     </>
   );
 };
-
 export default ThreadCard;
