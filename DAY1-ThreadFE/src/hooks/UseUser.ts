@@ -1,15 +1,15 @@
 import API from "../lib/api";
 import { useEffect, useState } from "react";
-import ThreadCardProps from "../interface/threads";
+import Users from "../interface/users";
 
 export function useFetchThread() {
-  const [threads, setThreads] = useState<ThreadCardProps[]>([]);
+  const [Users, setUsers] = useState<Users[]>([]);
   
-  async function getThreads() {
+  async function getUsers() {
     try {
-      const Response = await API.get("/threads");
+      const Response = await API.get("/users");
       console.log("API data:", Response.data);
-      setThreads(Response.data);
+      setUsers(Response.data);
     } catch (eror) { 
       console.error("gagal ambil data", eror);
     
@@ -17,10 +17,8 @@ export function useFetchThread() {
   }
 
   useEffect(() => {
-    getThreads();
+    getUsers();
     
 }, [])
-return {threads}
+return {Users}
 }
-
-

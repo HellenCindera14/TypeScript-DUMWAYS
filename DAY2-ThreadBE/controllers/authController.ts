@@ -1,15 +1,15 @@
-// import { Request,Response } from "express";
-// import AuthService from "../services/authService"
+import { Request,Response } from "express";
+import AuthService from "../services/ThreadService";
 
-// class AuthController {
-//     register(req:Request , res:Response){
-//         AuthService.register(req,res)
-//     }  
-//     login(req:Request , res:Response){
-//         AuthService.login(req,res)
-//     }  
-//     check(req:Request , res:Response){
-//         AuthService.check(req,res)
-//     }  
-// }
-// export default new AuthController()
+class AuthController {
+    register(req:Request , res:Response){
+        AuthService.register(req,res)
+    }  
+    login(req:Request , res:Response){
+        AuthService.login(req,res)
+    }  
+    check(req:Request , res:Response){
+        AuthService.check(req,res)
+    }  
+}
+export default new AuthController()

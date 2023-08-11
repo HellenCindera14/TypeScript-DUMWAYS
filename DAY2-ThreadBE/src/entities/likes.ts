@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne } from "typeorm"
-import { User } from "./user"
+import { Users } from "./user"
 import { Threads } from "./Threads"
 
 @Entity({name : "likes"})
@@ -11,10 +11,9 @@ export class Like {
     @Column('boolean', {default: false})
     isLike: boolean = false;
 
-    @ManyToOne(()=> User, (user)=> user.likes)
-    user: User
+    @ManyToOne(()=> Users, (user)=> user.likes)
+    user: Users[]
 
     @ManyToOne(()=> Threads, (thread)=> thread.likes)
     threads: Threads
-
 }

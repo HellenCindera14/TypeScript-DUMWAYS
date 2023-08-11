@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne, OneToMany } from "typeorm"
-import { User } from "./user"
+import { Users } from "./user"
 import { Like } from "./likes"
 import { Reply } from "./replies"
 
@@ -19,8 +19,8 @@ export class Threads {
     @Column({ type : "timestamp" , default: () => "CURRENT_TIMESTAMP" })
     posted_at: Date 
 
-    @ManyToOne(()=> User, (user)=> user.threadses)
-    user: User
+    @ManyToOne(()=> Users, (user)=> user.threadses)
+    user: Users[];
 
     @OneToMany(() => Like, (likes)=> likes.threads)
     likes: Like[];

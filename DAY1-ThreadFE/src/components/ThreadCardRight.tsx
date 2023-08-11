@@ -1,5 +1,9 @@
 import { Box, Image, Button, Text, Stack, Container } from "@chakra-ui/react";
-import { AiFillGithub, AiFillLinkedin, AiFillTwitterCircle } from "react-icons/ai";
+import {
+  AiFillGithub,
+  AiFillLinkedin,
+  AiFillTwitterCircle,
+} from "react-icons/ai";
 // import { Link } from "react-router-dom";
 
 interface ThreadCardProps {
@@ -20,6 +24,7 @@ const ThreadCardRight = (props: ThreadCardProps) => {
     <>
       <Box
         border="2px solid white"
+        boxShadow="20%"
         marginTop="10%"
         marginRight="10%"
         borderRadius={"2%"}
@@ -64,13 +69,14 @@ const ThreadCardRight = (props: ThreadCardProps) => {
           <Container>
             <Stack ml="80%">
               <Button
-                mt="-10"
+                mt="-9"
+                ml="-5px"
                 border="2px solid white"
-                bgColor="#04a51e"
-                color="white"
+                color="black"
                 width="80px"
-                height="30px"
-                borderRadius="20%"
+                height="27px"
+                borderRadius="30px"
+                fontSize="14px"
               >
                 Edit Profil
               </Button>
@@ -100,7 +106,7 @@ const ThreadCardRight = (props: ThreadCardProps) => {
         border="2px solid white"
         bg="black"
         mt="2%"
-        marginTop="10%"
+        marginTop="5%"
         marginRight="10%"
         borderRadius={"5%"}
         p="1%"
@@ -127,8 +133,91 @@ const ThreadCardRight = (props: ThreadCardProps) => {
             </Box>
           </Box>
 
-          <Stack>
-            <Button>Follow</Button>
+          <Stack mr="1%">
+            <Button borderRadius="30px" height="27px">
+              Follow
+            </Button>
+          </Stack>
+        </Stack>
+
+        <Stack>
+          <Stack flexDirection={"row"} justifyContent={"space-between"}>
+            <Box display={"flex"} mt="5px" flexDirection={"row"}>
+              <Image
+                src="https://cdn1.katadata.co.id/media/images/thumb/2021/10/06/Kucing_Bengal-2021_10_06-10_17_15_ad40e6fefe890f0db85dd31bd4d5d0c9_960x640_thumb.jpg"
+                alt="Author"
+                width={"30px"}
+                height={"30px"}
+                borderRadius="full"
+                objectFit="cover"
+                mr="8px"
+              />
+              <Box>
+                <Text color={"white"} fontWeight="bold" mr="5px">
+                  Helen Cindera
+                </Text>
+                <Text color={"grey"} mr="5px" fontSize={"12px"}>
+                  @Cindera
+                </Text>
+              </Box>
+            </Box>
+            <Stack mr="1%">
+              <Button borderRadius="30px" height="27px">
+                Follow
+              </Button>
+            </Stack>
+          </Stack>
+          <Stack flexDirection={"row"} justifyContent={"space-between"}>
+            <Box display={"flex"} mt="5px" flexDirection={"row"}>
+              <Image
+                src="https://cdn1.katadata.co.id/media/images/thumb/2021/10/06/Kucing_Bengal-2021_10_06-10_17_15_ad40e6fefe890f0db85dd31bd4d5d0c9_960x640_thumb.jpg"
+                alt="Author"
+                width={"30px"}
+                height={"30px"}
+                borderRadius="full"
+                objectFit="cover"
+                mr="8px"
+              />
+              <Box>
+                <Text color={"white"} fontWeight="bold" mr="5px">
+                  Helen Cindera
+                </Text>
+                <Text color={"grey"} mr="5px" fontSize={"12px"}>
+                  @Cindera
+                </Text>
+              </Box>
+            </Box>
+            <Stack mr="1%">
+              <Button borderRadius="30px" height="27px">
+                Follow
+              </Button>
+            </Stack>
+          </Stack>
+          <Stack flexDirection={"row"} justifyContent={"space-between"}>
+            <Box display={"flex"} mt="5px" flexDirection={"row"}>
+              <Image
+                src="https://cdn1.katadata.co.id/media/images/thumb/2021/10/06/Kucing_Bengal-2021_10_06-10_17_15_ad40e6fefe890f0db85dd31bd4d5d0c9_960x640_thumb.jpg"
+                alt="Author"
+                width={"30px"}
+                height={"30px"}
+                borderRadius="full"
+                objectFit="cover"
+                mr="8px"
+              />
+              <Box>
+                <Text color={"white"} fontWeight="bold" mr="5px">
+                  Helen Cindera
+                </Text>
+                <Text color={"grey"} mr="5px" fontSize={"12px"}>
+                  @Cindera
+                </Text>
+              </Box>
+            </Box>
+            <Stack mr="1%">
+              <Button borderRadius="30px" height="27px">
+                Follow
+              </Button>
+            </Stack>
           </Stack>
         </Stack>
       </Stack>
@@ -138,19 +227,27 @@ const ThreadCardRight = (props: ThreadCardProps) => {
         bg="black"
         marginTop="5%"
         marginRight="10%"
-        borderRadius={"5%"}
+        borderRadius="15px"
         p="1%"
       >
         <Container display={"flex"} m="2" flexDirection={"column"}>
           <Stack flexDirection={"row"}>
             <Text color={"white"}>Devloped by Helen Cindera</Text>
             <Stack flexDirection={"row"}>
-              <Button size={"XS"}><AiFillGithub/></Button>
-              <Button size={"XS"}><AiFillLinkedin/></Button>
-              <Button size={"XS"}><AiFillTwitterCircle/></Button>
+              <Button size={"XS"}>
+                <AiFillGithub />
+              </Button>
+              <Button size={"XS"}>
+                <AiFillLinkedin />
+              </Button>
+              <Button size={"XS"}>
+                <AiFillTwitterCircle />
+              </Button>
             </Stack>
           </Stack>
-          <Text color={"white"}>Devloped by Helen Cindera</Text>
+          <Text color={"white"} fontSize="13px" mt="1%">
+            Devloped by Helen Cindera #1CodingBootcamp
+          </Text>
         </Container>
       </Stack>
     </>

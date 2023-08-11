@@ -1,34 +1,7 @@
 import { useState } from "react";
 import { Box, Image, Button, Text,} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-// import { API } from "../lib/api";
-
-//struct
-interface ThreadCardProps {
-  id?: number;
-  author_picture?: string;
-  author_fullname?: string;
-  author_username?: string;
-  posted_at?: string;
-  content?: string;
-  image?: string;
-  likes_count?: number;
-  replies_count?: number;
-  is_liked?: boolean;
-}
-
-// export function ThreadCard() {
-//   const [Threads, setThreads] = useState();
-
-//   async function getThreads() {
-//     const response =await API.get('/threads')
-//     console.log("ini adalah threads", response)
-//   }
-
-//   useEffect(() => (
-//     getThreads()
-//   ),[])
-// }
+import  ThreadCardProps  from "../interface/threads";
 
 const ThreadCard = (props: ThreadCardProps) => {
   const [likesCount, setLikesCount] = useState(props.likes_count || 0);
@@ -50,7 +23,7 @@ const ThreadCard = (props: ThreadCardProps) => {
         
           <Box display={"flex"} mt="5px">
             <Image
-              src={props.author_picture}
+              src={props.user?.picture}
               alt="Author"
               width={"30px"}
               height={"30px"}
@@ -60,10 +33,10 @@ const ThreadCard = (props: ThreadCardProps) => {
             />
             <Box display={"flex"}>
               <Text color={"white"} fontWeight="bold" mr="5px">
-                {props.author_fullname}
+                {props.user?.fullname}
               </Text>
               <Text color={"grey"} mr="5px">
-                @{props.author_username}
+                @{props.user?.username}
               </Text>
               <Text color={"grey"}>({props.posted_at})</Text>
             </Box>

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne } from "typeorm"
-import { User } from "./user"
+import { Users } from "./user"
 import { Threads } from "./Threads"
 
 @Entity({name : "replies"})
@@ -12,8 +12,8 @@ export class Reply {
     comment: string
 
 
-    @ManyToOne(()=> User, (user)=> user.replies)
-    user: User
+    @ManyToOne(()=> Users, (user)=> user.replies)
+    user: Users[]
     @ManyToOne(()=> Threads, (thread)=> thread.likes)
-    threads: Threads
+    threads: Threads[]
 }
