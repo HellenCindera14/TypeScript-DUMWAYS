@@ -2,7 +2,7 @@ import { Repository } from "typeorm";
 import { Users } from "../src/entities/user";
 import AppDataSource from "../src/data-source";
 import { Request, Response } from "express";
-import { error } from "console";
+
 
 class UserServices {
   private readonly userRepository: Repository<Users> =
@@ -103,6 +103,24 @@ class UserServices {
       return res.status(500).json({ err: "delete gagal" });
     }
   }
+
+
+    async login(req: Request, res: Response) {
+        try {
+            const data = req.body;
+            
+            const user = await this.userRepository.create({
+                email: data.email,
+                password: data.password,
+            });
+
+            const createUser = await this.userRepository.save(user);
+
+            return res.status(200).json(createUser);
+        } catch (err) {
+            return res.status(500).json({ error: "Failed to create data" });
+        }
+    }
 }
 
 export default new UserServices

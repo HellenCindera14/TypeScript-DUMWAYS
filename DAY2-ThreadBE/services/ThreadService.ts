@@ -2,6 +2,7 @@ import { Repository } from "typeorm";
 import { Threads } from "../src/entities/Threads";
 import { Request, Response } from "express";
 import AppDataSource from "../src/data-source";
+// import { v2 as claoudinary }  from "../entities/Thread"
 
 class ThreadService {
   check(req: Request<import("express-serve-static-core").ParamsDictionary, any, any, import("qs").ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>) {
@@ -44,10 +45,6 @@ class ThreadService {
   async create(req: Request, res: Response) {
     try {
       const data = req.body;
-      // const {error} = data.eror;
-      // if (error) {
-      //   return res.status(404).json({message: "Failed to create thread.", error: error.message})
-      // }
       const thread = this.threadRepository.create({
         content: data.content,
         image: data.image,
@@ -60,6 +57,22 @@ class ThreadService {
       return res.status(500).json({ message: "Failed to create thread.", error: error.message });
     }
   }
+
+// day 6 menampilkan foto (upload foto. )
+//   async create(req: Request, res: Response) {
+//     try {
+//  claoudinary.upoader. upload ("/upload" + filename)
+//       const data = req.body;
+//       const thread = this.threadRepository.create({
+//         image: data.image,
+       
+//       });
+//       const createdThread = await this.threadRepository.save(thread);
+//       return res.status(200).json(createdThread);
+//     } catch (error) {
+//       return res.status(500).json({ message: "Failed to create thread.", error: error.message });
+//     }
+//   }
 
   async delete(req: Request, res: Response): Promise<Response> {
     const id = parseInt(req.params.id);

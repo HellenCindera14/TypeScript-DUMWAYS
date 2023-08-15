@@ -1,5 +1,5 @@
 import { Request,Response } from "express";
-import AuthService from "../services/ThreadService";
+import AuthService from "../services/authService";
 
 class AuthController {
     register(req:Request , res:Response){

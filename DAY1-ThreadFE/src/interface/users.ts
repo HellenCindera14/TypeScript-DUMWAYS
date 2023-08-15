@@ -1,4 +1,5 @@
-interface IUser {
+
+export interface IUser {
     id?: number;
     fullname?: string;
     username?: string;
@@ -7,4 +8,12 @@ interface IUser {
     picture?: string;
     description?: string;
   }
-  export default IUser
+
+
+export interface IUserLogin {
+    email : string;
+    password: string;
+  }
+
+  export default IUserLogin
+

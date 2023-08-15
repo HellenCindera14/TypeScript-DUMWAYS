@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Box, Image, Button, Text,} from "@chakra-ui/react";
+import { Box, Image, Button, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import  ThreadCardProps  from "../interface/threads";
+import ThreadCardProps from "../interface/threads";
 
 const ThreadCard = (props: ThreadCardProps) => {
+  const [showImage, setShowImage] = useState<boolean>(true);
+
   const [likesCount, setLikesCount] = useState(props.likes_count || 0);
   const [isLiked, setIsLiked] = useState(props.is_liked || false);
 
@@ -20,10 +22,9 @@ const ThreadCard = (props: ThreadCardProps) => {
     <>
       <Box>
         <Box fontSize="14px">
-        
           <Box display={"flex"} mt="5px">
             <Image
-              src={props.user?.picture}
+              src={props.user.picure }
               alt="Author"
               width={"30px"}
               height={"30px"}
@@ -33,28 +34,33 @@ const ThreadCard = (props: ThreadCardProps) => {
             />
             <Box display={"flex"}>
               <Text color={"white"} fontWeight="bold" mr="5px">
-                {props.user?.fullname}
+                {props.fullname}
               </Text>
               <Text color={"grey"} mr="5px">
-                @{props.user?.username}
+                @{props.username}
               </Text>
               <Text color={"grey"}>({props.posted_at})</Text>
             </Box>
           </Box>
           <Box mb="25px" mt="4px" width="95%">
             <Link
-              to={`/${props.id}`}
+              to={'/' + props.user?.id}
               style={{ color: "white", marginBottom: "5px" }}
             >
               {props.content}
             </Link>
-            <Image
-              src={props.image}
-              objectFit={"fill"}
-              alt="Thread"
-              borderRadius="10px"
-              mb="10px"
-            />
+
+            {showImage && (
+              <Image
+                src={props.image}
+                onError={() => setShowImage(false)}
+                objectFit={"fill"}
+                alt="Thread"
+                borderRadius="10px"
+                mb="10px"
+              />
+            )}
+
             <Box display="flex" justifyContent="space-between" w="20%">
               <Button
                 onClick={handleLikeClick}

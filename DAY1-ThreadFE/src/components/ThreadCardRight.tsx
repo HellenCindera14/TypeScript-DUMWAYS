@@ -23,7 +23,7 @@ const ThreadCardRight = (props: ThreadCardProps) => {
   return (
     <>
       <Box
-        border="2px solid white"
+        border="1px solid white"
         boxShadow="20%"
         marginTop="10%"
         marginRight="10%"
@@ -71,7 +71,7 @@ const ThreadCardRight = (props: ThreadCardProps) => {
               <Button
                 mt="-9"
                 ml="-5px"
-                border="2px solid white"
+                border="1px solid white"
                 color="black"
                 width="80px"
                 height="27px"

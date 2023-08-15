@@ -1,8 +1,7 @@
+import BlogDetail from "../components/BlogDetail";
 import IUser from "./users";
 
-interface ThreadCardProps {
-    fullname: string;
-    username: string;
+interface IBlogDetail{
     id?: number;
     user : IUser;
     posted_at?: string;
@@ -12,4 +11,4 @@ interface ThreadCardProps {
     replies_count?: number;
     is_liked?: boolean;
   }
-  export default ThreadCardProps
+  export default BlogDetail

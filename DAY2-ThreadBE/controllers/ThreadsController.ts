@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import ThreadsService from "../services/ThreadService";
 
+
 class ThreadController {
   find(req: Request, res: Response) {
     ThreadsService.find(req, res);

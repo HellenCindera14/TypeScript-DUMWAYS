@@ -22,6 +22,7 @@ class userController {
     UserServices.delete(req, res);
   }
 
+
 }
 
 export default new userController();
