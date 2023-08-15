@@ -1,7 +1,7 @@
-import BlogDetail from "../components/BlogDetail";
+import IDetail from "../components/BlogDetail";
 import IUser from "./users";
 
-interface IBlogDetail{
+interface IDetail{
     id?: number;
     user : IUser;
     posted_at?: string;
@@ -11,4 +11,4 @@ interface IBlogDetail{
     replies_count?: number;
     is_liked?: boolean;
   }
-  export default BlogDetail
+  export default IDetail
