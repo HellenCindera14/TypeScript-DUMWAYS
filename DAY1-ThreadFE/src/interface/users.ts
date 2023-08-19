@@ -1,19 +1,20 @@
 
 export interface IUser {
-    id?: number;
+    id?: string;
     fullname?: string;
     username?: string;
     email?: string;
     password?: string;
     picture?: string;
+    image?: string;
     description?: string;
   }
 
 
 export interface IUserLogin {
+
     email : string;
     password: string;
   }
 
-  export default IUserLogin
 

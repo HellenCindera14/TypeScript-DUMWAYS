@@ -1,4 +1,4 @@
-import IUser  from "../../interface/users";
+import { IUser }  from "../../interface/users";
 
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
@@ -9,7 +9,7 @@ const initialAuthstate: IUser = {
     password: "",
     email: "",
     description: "",
-    picture: "",
+    picture: ""
 };
 
 export const authSlice = createSlice({
@@ -21,14 +21,21 @@ export const authSlice = createSlice({
       const payload = action.payload;
       
     
-    //   state.id = payload.user.id;
-    //   state.email = payload.user.email;
-    //   state.username = payload.user.username;
-    //   state.fullname = payload.user.fullname;
-    //   state.description = payload.user.description;
-    //   state.picture = payload.user.picture;
+      state.id = payload.user.id;
+      state.email = payload.user.email;
+      state.username = payload.user.username;
+      state.fullname = payload.user.fullname;
+      state.description = payload.user.description;
+      state.picture = payload.user.picture;
 
       return state;
+    },
+
+    AUTH_CHECK: (state, action) => {
+    },
+    AUTH_EROR: (state) => {
+    },
+    AUTH_LOGOUT: (state) => {
     },
     
   },

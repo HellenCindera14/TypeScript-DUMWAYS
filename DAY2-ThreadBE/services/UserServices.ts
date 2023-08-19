@@ -3,7 +3,6 @@ import { Users } from "../src/entities/user";
 import AppDataSource from "../src/data-source";
 import { Request, Response } from "express";
 
-
 class UserServices {
   private readonly userRepository: Repository<Users> =
     AppDataSource.getRepository(Users);
@@ -42,10 +41,10 @@ class UserServices {
         picture: data.picture,
         description: data.description,
       });
-      const createUser = this.userRepository.save(user)
-      return res.status(200).json(createUser)
+      const createUser = this.userRepository.save(user);
+      return res.status(200).json(createUser);
     } catch (err) {
-      return res.status(500).json({errr: "gagal create data" });
+      return res.status(500).json({ errr: "gagal create data" });
     }
   }
 
@@ -104,23 +103,22 @@ class UserServices {
     }
   }
 
+  async login(req: Request, res: Response) {
+    try {
+      const data = req.body;
 
-    async login(req: Request, res: Response) {
-        try {
-            const data = req.body;
-            
-            const user = await this.userRepository.create({
-                email: data.email,
-                password: data.password,
-            });
+      const user = await this.userRepository.create({
+        email: data.email,
+        password: data.password,
+      });
 
-            const createUser = await this.userRepository.save(user);
+      const createUser = await this.userRepository.save(user);
 
-            return res.status(200).json(createUser);
-        } catch (err) {
-            return res.status(500).json({ error: "Failed to create data" });
-        }
+      return res.status(200).json(createUser);
+    } catch (err) {
+      return res.status(500).json({ error: "Failed to create data" });
     }
+  }
 }
 
-export default new UserServices
+export default new UserServices();

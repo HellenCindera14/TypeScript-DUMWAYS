@@ -3,7 +3,7 @@ import { Box, Image, Button, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import ThreadCardProps from "../interface/threads";
 
-const ThreadCard = (props: ThreadCardProps) => {
+export const ThreadCard = (props: ThreadCardProps) => {
   const [showImage, setShowImage] = useState<boolean>(true);
 
   const [likesCount, setLikesCount] = useState(props.likes_count || 0);
@@ -24,7 +24,7 @@ const ThreadCard = (props: ThreadCardProps) => {
         <Box fontSize="14px">
           <Box display={"flex"} mt="5px">
             <Image
-              src={props.user.picure }
+              src={props.user.picture}
               alt="Author"
               width={"30px"}
               height={"30px"}
@@ -43,12 +43,7 @@ const ThreadCard = (props: ThreadCardProps) => {
             </Box>
           </Box>
           <Box mb="25px" mt="4px" width="95%">
-            <Link
-              to={'/' + props.user?.id}
-              style={{ color: "white", marginBottom: "5px" }}
-            >
-              {props.content}
-            </Link>
+            <Box color="white">{props.content}</Box>
 
             {showImage && (
               <Image
@@ -73,9 +68,14 @@ const ThreadCard = (props: ThreadCardProps) => {
               >
                 {likesCount} Likes
               </Button>
-              <Button width="15%" fontSize="10px" height="20px">
-                {props.replies_count} Replies
-              </Button>
+              <Link
+                to={"/detail/" + props.user?.id}
+                style={{ color: "white", marginBottom: "5px" }}
+              >
+                <Button width="15%" fontSize="10px" height="20px">
+                  {props.replies_count} Replies
+                </Button>
+              </Link>
             </Box>
           </Box>
         </Box>
@@ -83,4 +83,3 @@ const ThreadCard = (props: ThreadCardProps) => {
     </>
   );
 };
-export default ThreadCard;

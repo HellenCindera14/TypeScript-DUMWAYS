@@ -1,11 +1,11 @@
 
-import  IThreadCardProps  from "./threads";
-import { IUser } from "./users";
+// import  IThreadCardProps  from "./threads";
+// import { IUser } from "..interface/users";
 
 
-export interface IReply {
-    id: number;
-    comment : string;
-    user : IUser
-    thread : IThreadCardProps
-  }
+// export interface IReply {
+//     id: number;
+//     comment : string;
+//     user : IUser
+//     thread : IThreadCardProps
+//   }

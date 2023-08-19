@@ -4,15 +4,15 @@ import ThreadsData from "../utils/dummy.json";
 import Navbar from "../components/navbar";
 import ThreadCardRight from "../components/ThreadCardRight";
 import TombolHomeUp from "../components/TombolHomeUp";
-import API from "../lib/api";
+import { API } from "../lib/api";
 import { useFetchThread } from "../hooks/UseFetchThreads";
-import ThreadCard from "../components/ThreadCard";
+import { ThreadCard } from "../components/ThreadCard";
 
 const Home = () => {
   const { threads } = useFetchThread();
   const [data, _] = useState(ThreadsData);
 
-  const resp = API.get("/thread");
+  const resp = API.get("/threads");
   console.log(resp);
 
   return (
@@ -33,9 +33,7 @@ const Home = () => {
               content={item.content}
               image={item.image}
               likes_count={item.likes_count}
-              replies_count={item.replies_count}
-              is_liked={item.is_liked}
-            />
+              replies_count={item.replies_count}          />
           );
         })}
       </GridItem>
@@ -43,7 +41,6 @@ const Home = () => {
       <GridItem area={"profil"}>
         <ThreadCardRight />
       </GridItem>
-
     </Grid>
   );
 };

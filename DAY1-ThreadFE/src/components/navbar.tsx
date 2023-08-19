@@ -1,6 +1,7 @@
 import { Box, Button, GridItem, Heading, Stack, Text } from "@chakra-ui/react";
 import { FaHeart, FaHome, FaRegAddressBook, FaSearch } from "react-icons/fa";
 import { CgLogOut } from "react-icons/Cg";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -16,9 +17,9 @@ const Navbar = () => {
           MY APLICATION
           <Box display={"flex"} alignItems="center" mb="5" mt="10%" ml="5%">
             <FaHome color="white" fontSize="25px" />
-            <Text color="white" rowGap={1} ml="5%" fontSize="25px">
-              Home
-            </Text>
+            <Text color="white" rowGap={1} ml="5%" fontSize="25px"><Link to={"/"}>
+              Home 
+              </Link></Text>
           </Box>
           <Box
             ml="5%"

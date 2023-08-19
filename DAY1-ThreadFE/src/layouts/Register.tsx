@@ -8,9 +8,9 @@ import {
   FormControl,
   FormLabel,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import IUserRegister from "../interface/Register";
-import API from "../lib/api";
+import { API } from "../lib/api";
 
 function FormRegister() {
   const [form, setForm] = useState<IUserRegister>({
@@ -19,7 +19,7 @@ function FormRegister() {
     username: "",
     password: "",
   });
-
+const navigate = useNavigate()
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setForm({
@@ -33,7 +33,7 @@ function FormRegister() {
     try {
       const response =await API.post("/auth/register", form)
       console.log("register berhasil ",response)
-
+      navigate("/FormLogin")
     }catch (err) {
       console.log(err);
     }
@@ -91,19 +91,17 @@ function FormRegister() {
               colorScheme="teal"
               type="button" 
               color="white"
+              bg={"green"}
               onClick={handleRegister}
             >
               Register
             </Button>
           </form>
         </Box>
-
-        <Text fontSize="lg" color="white" size="15px">
-          Already have an account?{" "}
-          <Link to={"/FormLogin"} color="red">
-            {" "}
-            Login
-          </Link>
+        
+        <Text fontSize="lg" color="white" size="15px" display={"flex"}ml={"40%"}>
+          Already have an account? {" "}
+          <Link to={"/FormLogin"} ><Text color={'green'} ml={"5px"}>login</Text></Link>
         </Text>
       </Box>
     </ChakraProvider>

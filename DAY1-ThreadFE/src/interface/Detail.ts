@@ -1,5 +1,4 @@
-import IDetail from "../components/BlogDetail";
-import IUser from "./users";
+import { IUser } from "./users";
 
 interface IDetail{
     id?: number;

@@ -1,5 +1,5 @@
 // import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-// import { user } from "./user";
+// import { Usersuser } from "./user";
 // import { Threads } from "./Threads";
 
 // @Entity({ name: "follows" })
@@ -18,4 +18,5 @@
 
 //   @ManyToOne(() => Threads, (thread) => thread.likes)
 //   followed: number;
+
 // }

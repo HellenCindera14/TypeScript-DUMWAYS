@@ -1,92 +1,42 @@
+import { IUser } from "../interface/users";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import  IUser  from "../interface/users";
-
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-
-const initialAuthstate: IUser = {
-    id: 0,
-    fullname: "",
-    username: "",
-    password: "",
-    email: "",
-    description: "",
-    picture: "",
+const initialAuthState: IUser = {
+  id: 0,
+  fullname: "",
+  username: "",
+  password: "",
+  email: "",
+  description: "",
+  picture: "",
 };
 
-export const authSlice = createSlice({
+const authSlice = createSlice({
   name: "auth",
-  initialState: initialAuthstate,
+  initialState: initialAuthState,
   reducers: {
-
-    // AUTH_LOGIN: (state, action) => {
-    //   const payload = action.payload;
-    //   console.log("ini data payload : ", payload);
-    //   localStorage.setItem("token", payload.token);
-    //   state.id = payload.user.id; // Store user's ID in the state
-    //   state.email = payload.user.email;
-    //   state.username = payload.user.username;
-    //   state.fullname = payload.user.fullname;
-    // },
-
-    AUTH_LOGIN: (state: { id: any; email: any; username: any; fullname: any; description: any; picture: any; }, action: PayloadAction<{ token: string; user: IUser }>) => {
+    authLogin: (state, action: PayloadAction<{ token: string; user: IUser }>) => {
       const payload = action.payload;
-    
+      console.log("ini data payload : ", payload);
       localStorage.setItem("token", payload.token);
-    
       state.id = payload.user.id;
       state.email = payload.user.email;
       state.username = payload.user.username;
       state.fullname = payload.user.fullname;
-      state.description = payload.user.description;
-      state.picture = payload.user.picture;
-
-      return state;
     },
-    
-
-
-// AUTH_LOGIN: (_, action) => {
-//   const payload = action.payload;
-//   console.log("ini data payload : ", payload);
-//   localStorage.setItem("token", payload.token);
-//   const user: IUser = {
-//     id: payload.user.id,
-//     email: payload.user.email,
-//     username: payload.user.username,
-//     fullname: payload.user.fullname,
-//   };
-  
-
-//   return user;
-// },
-    
-    // AUTH_CHECK: (state, action) => {},
-    // AUTH_ERROR: (state) => {},
-    // AUTH_LOGOUT: (state) => {},
+    authCheck: (state, action) => {
+      // Implementasi pengecekan autentikasi
+    },
+    authError: (state) => {
+      // Implementasi penanganan kesalahan
+    },
+    authLogout: (state) => {
+      // Implementasi logout
+      return initialAuthState;
+    },
   },
 });
 
-// export function authSlice = createSlice{{
-// name: "auth",
-// initialstate : initialAuthstate,
-// reducers:{
-//     AUTH_LOGIN : (state : IUser, action) =>{
-//         localStorage.setItem("token", action.payload.token)
-//         state = action.payload
-//         const user : IUser = {
-//             id : action.payload.id,
-//             fullname : action.payload.fullname,
-//             username : action.payload.username,
-//             email : action.payload.email,
-//         }
-//     },
-//     AUTH_CHECK : (state, action) =>{
+export const { authLogin, authCheck, authError, authLogout } = authSlice.actions;
 
-//     },
-//     AUTH_ERROR : (state) =>{
-
-//     },
-//     AUTH_LOGOUT : (state) =>{
-
-// },
-// }}}
+export default authSlice.reducer;
