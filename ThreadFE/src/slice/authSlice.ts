@@ -2,7 +2,7 @@ import { IUser } from "../interface/users";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialAuthState: IUser = {
-  id: 0,
+  id: "",
   fullname: "",
   username: "",
   password: "",

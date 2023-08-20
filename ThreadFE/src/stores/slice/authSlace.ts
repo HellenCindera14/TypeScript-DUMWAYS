@@ -31,12 +31,12 @@ export const authSlice = createSlice({
       return state;
     },
 
-    AUTH_CHECK: (state, action) => {
-    },
-    AUTH_EROR: (state) => {
-    },
-    AUTH_LOGOUT: (state) => {
+    // AUTH_CHECK: (state, action) => {
+    // },
+    // AUTH_EROR: (state) => {
+    // },
+    // AUTH_LOGOUT: (state) => {
     },
     
-  },
+  // },
 });

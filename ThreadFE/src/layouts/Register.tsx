@@ -31,11 +31,11 @@ const navigate = useNavigate()
   async function handleRegister() {
     console.log("data Register", form); 
     try {
-      const response =await API.post("/auth/register", form)
-      console.log("register berhasil ",response)
+      const response = await API.post("/auth/register", form)
+      console.log("register berhasil ")
       navigate("/FormLogin")
     }catch (err) {
-      console.log(err);
+      console.log(err, "entah apa salahnya");
     }
     
   }

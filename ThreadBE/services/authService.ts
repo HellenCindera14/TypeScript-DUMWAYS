@@ -23,8 +23,6 @@ class AuthService {
         return res.status(400).json({ error: error });
       }
 
-      const password = bcrypt.hash(value.password, 10);
-
       const checkEmail = await this.authRepository.count({
         where: {
           email: value.email,

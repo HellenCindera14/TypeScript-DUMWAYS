@@ -1,9 +1,9 @@
-import API from "../lib/api";
+import { API } from "../lib/api";
 import { useEffect, useState } from "react";
-import Users from "../interface/users";
+import { IUser } from "../interface/users";
 
 export function useFetchThread() {
-  const [Users, setUsers] = useState<Users[]>([]);
+  const [Users, setUsers] = useState<IUser[]>([]);
   
   async function getUsers() {
     try {
