@@ -1,30 +1,37 @@
-import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne, OneToMany } from "typeorm"
-import { Users } from "./user"
-import { Like } from "./likes"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
+import { User } from "./user"
+import { Like } from "./Like"
 import { Reply } from "./replies"
 
-@Entity({name : "threads"})
-export class Threads {
-
+@Entity({ name: "threads" })
+export class Thread {
     @PrimaryGeneratedColumn()
     id: number
 
     @Column()
     content: string
 
-    @Column({nullable : true})
+    @Column({ nullable: true })
     image: string
 
+    @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+    posted_at: Date
 
-    @Column({ type : "timestamp" , default: () => "CURRENT_TIMESTAMP" })
-    posted_at: Date 
+    @ManyToOne(() => User, (user) => user.threads, {
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
+    })
+    user: User
 
-    @ManyToOne(()=> Users, (user)=> user.threadses)
-    user: Users[];
+    @OneToMany(() => Like, (like) => like.thread, {
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
+    })
+    likes: Like[]
 
-    @OneToMany(() => Like, (likes)=> likes.threads)
-    likes: Like[];
-    
-    @OneToMany(() => Reply, (replies)=> replies.threads)
-    replies: Reply[];
+    @OneToMany(() => Reply, (like) => like.thread, {
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
+    })
+    replies: Reply[]
 }

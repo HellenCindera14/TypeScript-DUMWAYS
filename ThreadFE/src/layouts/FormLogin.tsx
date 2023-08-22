@@ -12,6 +12,8 @@ import {
 import { API } from "../lib/api";
 import {IUserLogin} from "../interface/users";
 import { Link, useNavigate } from "react-router-dom";
+
+
 export default function FormLogin() {
   const [form, setForm] = useState<IUserLogin>({
     email: "",
@@ -32,15 +34,15 @@ export default function FormLogin() {
     event.preventDefault();
     console.log("data login", form);
     try {
-      const response = await API.post("/auth/login", form);
+      const response = await API.post("/login", form);
       console.log("login berhasil", response);
       localStorage.setItem("token", response.data.token);
-      navigate("/ ");
-    } catch (err) {
-      console.log(err);
+      navigate("/"); 
+    } catch (error) {
+      console.error("Error during login:", error); 
     }
   }
-
+  
   return (
     <ChakraProvider>
       <Box textAlign="center" p={8}>

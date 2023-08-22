@@ -1,22 +1,20 @@
-// import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-// import { Usersuser } from "./user";
-// import { Threads } from "./Threads";
+import { Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "./user";
 
-// @Entity({ name: "follows" })
-// export class follows {
-//   @PrimaryGeneratedColumn()
-//   id: number;
+@Entity({ name: "follows" })
+export class Follow {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-//   @Column()
-//   followerId: number;
+  @ManyToOne(() => User, (user) => user.followers, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  follower: User;
 
-//   @Column()
-//   followedId: number;
-
-//   @ManyToOne(() => user, (user) => user.replies)
-//   follower: number;
-
-//   @ManyToOne(() => Threads, (thread) => thread.likes)
-//   followed: number;
-
-// }
+  @ManyToOne(() => User, (user) => user.followings, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  followed: User;
+}

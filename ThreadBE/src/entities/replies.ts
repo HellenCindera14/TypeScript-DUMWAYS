@@ -1,19 +1,24 @@
-import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne } from "typeorm"
-import { Users } from "./user"
-import { Threads } from "./Threads"
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { User } from "./user";
+import { Thread } from "./Threads";
 
-@Entity({name : "replies"})
+@Entity({ name: "replies" })
 export class Reply {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number
+  @Column()
+  content: string;
 
-    @Column({nullable : true})
-    comment: string
+  @ManyToOne(() => User, (user) => user.replies, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  user: User;
 
-
-    @ManyToOne(()=> Users, (user)=> user.replies)
-    user: Users[]
-    @ManyToOne(()=> Threads, (thread)=> thread.likes)
-    threads: Threads[]
+  @ManyToOne(() => Thread, (thread) => thread.replies, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  thread: Thread;
 }

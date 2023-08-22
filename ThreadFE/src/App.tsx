@@ -1,10 +1,8 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import { BlogDetail } from "./components/BlogDetail";
-import Login from "./layouts/Login";
-import Register from "./layouts/Register";
-import { useEffect, useState } from "react";
-import { API, setAuthToken } from "./lib/api";
+import Login from "./layouts/FormLogin";
+import Register from "./layouts/FormRegister";
 
 function App() {
 

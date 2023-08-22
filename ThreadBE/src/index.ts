@@ -1,6 +1,6 @@
 import * as express from "express";
 import * as cors from "cors";
-import router from "../route/index";
+import router from "../../ThreadBE/src/route/index";
 import AppDataSource from "./data-source";
 
 AppDataSource.initialize()

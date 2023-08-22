@@ -1,8 +1,8 @@
-interface IUserREgister {
+interface IUserRegister {
     fullname?: string;
-    email?: string;
     username?:string;
+    email?: string;
     password?:string;
   }
 
-  export default IUserREgister;
+  export default IUserRegister;

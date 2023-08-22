@@ -1,28 +1,24 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  OneToMany,
-} from "typeorm";
-import { Threads } from "./Threads";
-import { Like } from "./likes";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Thread } from "./Threads";
+import { Like } from "./Like";
+import { Follow } from "./follows";
 import { Reply } from "./replies";
 
 @Entity({ name: "users" })
-export class Users {
+export class User {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column()
-  fullname: string;
 
   @Column()
   username: string;
 
   @Column()
+  fullname: string;
+
+  @Column()
   email: string;
 
-  @Column({ })
+  @Column({ select: false })
   password: string;
 
   @Column({ nullable: true })
@@ -31,18 +27,33 @@ export class Users {
   @Column({ nullable: true })
   description: string;
 
-  @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-  created_at: Date;
+  @OneToMany(() => Thread, (thread) => thread.user, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  threads: Thread[];
 
-  @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-  updated_at: Date;
-
-  @OneToMany(() => Threads, (threads) => threads.user)
-  threads: Threads[];
-  
-  @OneToMany(() => Like, (likes) => likes.user)
-  @OneToMany(() => Reply, (replies) => replies.user)
-  threadses: Threads[];
+  @OneToMany(() => Thread, (thread) => thread.user, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
   likes: Like[];
+
+  @OneToMany(() => Follow, (follow) => follow.follower, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  followers: Follow[];
+
+  @OneToMany(() => Follow, (follow) => follow.followed, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  followings: Follow[];
+
+  @OneToMany(() => Reply, (reply) => reply.user, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
   replies: Reply[];
 }

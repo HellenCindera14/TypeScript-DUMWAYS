@@ -1,42 +1,49 @@
-import { IUser }  from "../../interface/users";
+// import { IUser } from "../../interface/users";
+// import { setAuthToken } from "../../lib/api";
+// import { createSlice } from "@reduxjs/toolkit";
 
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+// const initialAuthState: IUser = {
+//   id: "",
+//   email: "",
+//   fullname: "",
+//   username: "",
+// };
 
-const initialAuthstate: IUser = {
-    id: "",
-    fullname: "",
-    username: "",
-    password: "",
-    email: "",
-    description: "",
-    picture: ""
-};
+// export const authSlice = createSlice({
+//   name: "auth",
+//   initialState: initialAuthState,
+//   reducers: {
+//     AUTH_LOGIN: (_, action) => {
+//       const payload = action.payload;
+//       setAuthToken(payload.token);
+//       localStorage.setItem("token", payload.token);
 
-export const authSlice = createSlice({
-  name: "auth",
-  initialState: initialAuthstate,
-  reducers: {
+//       const user: IUser = {
+//         id: payload.user.id,
+//         fullname: payload.user.fullname,
+//         username: payload.user.username,
+//         email: payload.user.email,
+//       };
 
-    AUTH_LOGIN: (state, action: PayloadAction<{ token: string; user: IUser }>) => {
-      const payload = action.payload;
+//       return user;
+//     },
+//     AUTH_CHECK: (_, action) => {
+//       const payload = action.payload;
       
-    
-      state.id = payload.user.id;
-      state.email = payload.user.email;
-      state.username = payload.user.username;
-      state.fullname = payload.user.fullname;
-      state.description = payload.user.description;
-      state.picture = payload.user.picture;
+//       const user: IUser = {
+//         id: payload.id,
+//         fullname: payload.fullname,
+//         username: payload.username,
+//         email: payload.email,
+//       };
 
-      return state;
-    },
-
-    // AUTH_CHECK: (state, action) => {
-    // },
-    // AUTH_EROR: (state) => {
-    // },
-    // AUTH_LOGOUT: (state) => {
-    },
-    
-  // },
-});
+//       return user;
+//     },
+//     AUTH_ERROR: () => {
+//       localStorage.removeItem("token");
+//     },
+//     AUTH_LOGOUT: () => {
+//       localStorage.removeItem("token");
+//     },
+//   },
+// });

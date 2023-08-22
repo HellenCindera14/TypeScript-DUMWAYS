@@ -1,5 +1,5 @@
-import  rootReducer  from "../rootReducer";
+// import  rootReducer  from "../rootReducer";
 
-export type RootState = ReturnType<typeof rootReducer>;
+// export type RootState = ReturnType<typeof rootReducer>;
 
 

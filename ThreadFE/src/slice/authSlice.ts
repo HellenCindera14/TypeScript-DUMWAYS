@@ -24,19 +24,18 @@ const authSlice = createSlice({
       state.username = payload.user.username;
       state.fullname = payload.user.fullname;
     },
-    authCheck: (state, action) => {
-      // Implementasi pengecekan autentikasi
-    },
-    authError: (state) => {
-      // Implementasi penanganan kesalahan
-    },
-    authLogout: (state) => {
-      // Implementasi logout
-      return initialAuthState;
-    },
+    // authCheck: (state, action) => {
+    //   // Implementasi pengecekan autentikasi
+    // },
+    // authError: (state) => {
+    //   // Implementasi penanganan kesalahan
+    // },
+    // authLogout: (state) => {
+    //   // Implementasi logout
+    //   return initialAuthState;
+    // },
   },
 });
 
-export const { authLogin, authCheck, authError, authLogout } = authSlice.actions;
+export const { authLogin,} = authSlice.actions;
 
-export default authSlice.reducer;

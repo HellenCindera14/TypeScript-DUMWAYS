@@ -1,11 +1,11 @@
 import { Repository } from "typeorm";
-import { Users } from "../src/entities/user";
-import AppDataSource from "../src/data-source";
+import { User } from "../entities/user";
+import AppDataSource from "../data-source";
 import { Request, Response } from "express";
 
 class UserServices {
-  private readonly userRepository: Repository<Users> =
-    AppDataSource.getRepository(Users);
+  private readonly userRepository: Repository<User> =
+    AppDataSource.getRepository(User);
 
   async find(req: Request, res: Response) {
     try {
