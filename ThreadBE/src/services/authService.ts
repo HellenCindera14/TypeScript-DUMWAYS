@@ -83,7 +83,7 @@ class AuthService {
         throw new Error("Email / password is wrong!");
       }
 
-      const token = jwt.sign({ user }, "dumbwaysterbaik", { expiresIn: "1h" });
+      const token = jwt.sign({ user }, "bisalah!!", { expiresIn: "1h" });
 
       return {
         message: "Login successful!",

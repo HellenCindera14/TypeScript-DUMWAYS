@@ -2,7 +2,6 @@ import { Request, RequestHandler, Response } from "express";
 import ThreadsService from "../services/ThreadService";
 
 class ThreadsController {
-  [x: string]: RequestHandler<{}, any, any, Record<string, any>>;
   async find(req: Request, res: Response) {
     try {
       const loginSession = res.locals.loginSession;
@@ -28,6 +27,9 @@ class ThreadsController {
         .status(500)
         .json({ error: "Something went wrong on the server!" });
     }
+  }
+  create(req: Request, res: Response) {
+    ThreadsService.create(req,res)
   }
 }
 

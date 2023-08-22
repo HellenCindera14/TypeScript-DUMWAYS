@@ -9,7 +9,7 @@ import {
   FormControl,
   FormLabel,
 } from "@chakra-ui/react";
-import { API } from "../lib/api";
+import { API, setAuthToken } from "../lib/api";
 import {IUserLogin} from "../interface/users";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -37,6 +37,7 @@ export default function FormLogin() {
       const response = await API.post("/login", form);
       console.log("login berhasil", response);
       localStorage.setItem("token", response.data.token);
+      setAuthToken(localStorage.token)
       navigate("/"); 
     } catch (error) {
       console.error("Error during login:", error); 

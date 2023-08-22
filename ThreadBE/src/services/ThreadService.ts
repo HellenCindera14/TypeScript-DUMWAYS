@@ -1,6 +1,7 @@
 import { Repository } from "typeorm";
 import  AppDataSource  from "../data-source";
 import { Thread } from "../entities/Threads";
+import { Request, Response } from "express";
 
 class ThreadsService {
   private readonly threadRepository: Repository<Thread> =
@@ -58,6 +59,22 @@ class ThreadsService {
       };
     } catch (err) {
       throw new Error("Something went wrong on the server!");
+    }
+  }
+
+  async create(req: Request, res: Response) {
+    try {
+      const data = req.body;
+      const filename = res.locals.filename;
+
+      const thread = this.threadRepository.create({
+        content: data.content,
+        image: filename,
+      });
+      const createThread = this.threadRepository.save(thread);
+      return res.status(200).json(createThread);
+    } catch (err) {
+      return res.status(500).json({ error: "sorry there was an error" });
     }
   }
   

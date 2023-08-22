@@ -1,6 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import * as multer from "multer";
-import { v2 as cloudinary } from "cloudinary";
+
+// cloudinary.config({
+//     claod_name: "ddlupyy8i",
+//     api_key: "151499178714111",
+//     api_secret: "xmwXIpFtMZWyDm8GzcQQB8F77DA"
+// })
 
 export const upload = (image: string) => {
   const storage = multer.diskStorage({
@@ -17,30 +22,12 @@ export const upload = (image: string) => {
 
   return (req: Request, res: Response, next: NextFunction) => {
     uploadFile.single(image)(req, res, function (err: any) {
-      const file = req.file;
-
-      if (!file) {
-        return res.status(400).json({
-          eror: "no file uploaded, please input your file!",
-        });
+      if (err) {
+        console.log(err);
+        return res.status(400).json({ error: "file upload failed." });
       }
-
-      try {
-        cloudinary.uploader.upload(file.path, (eror, result) => {
-          if (eror) {
-            return res.status(500).json({
-              eror: "failid upload to cloudinary! try again!",
-            });
-          }
-
-          res.locals.filename = result.secure_url;
-          next();
-        });
-      } catch (eror) {
-        return res.status(400).json({
-          eror: eror,
-        });
-      }
+      res.locals.filename = req.file.filename;
+      next();
     });
   };
 };

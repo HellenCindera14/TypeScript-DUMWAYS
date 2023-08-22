@@ -7,6 +7,8 @@ import ThreadsController from "../controllers/ThreadsController";
 import image from "next/image";
 import UserServices from "../services/UserServices";
 import authService from "../services/authService";
+import authenticate from "../middlewares/auth";
+import { upload } from "../middlewares/uploadFile";
 
 const router = express.Router();
 
@@ -21,7 +23,7 @@ router.get("/threads/:id", ThreadsController.findOne);
 // router.post("/threads/create", ThreadsController.create);
 // router.patch("/threads/update/:id", ThreadsController.update);
 // router.delete("/threads/delete/:id", ThreadsController.delete);
-// router.post("threads/create", upload(image)), ThreadsController.create
+router.post("/threads/create",authenticate, upload("image"), ThreadsController.create);
 
 //USER
 router.get("/user", UserContoller.find);
@@ -31,8 +33,8 @@ router.patch("/user/update/:id", UserServices.update);
 router.delete("/user/delete/:id", UserServices.delete);
 
 //AUTH
-// router.post("/auth/",authController.find);
-router.post("/register",authController.register);
 router.post("/login",authController.login);
+router.post("/register",authController.register);
+router.get("/check", authenticate, authController.check);
 
 export default router;

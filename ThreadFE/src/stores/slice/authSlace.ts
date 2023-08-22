@@ -3,7 +3,7 @@
 // import { createSlice } from "@reduxjs/toolkit";
 
 // const initialAuthState: IUser = {
-//   id: "",
+//   id: 0,
 //   email: "",
 //   fullname: "",
 //   username: "",

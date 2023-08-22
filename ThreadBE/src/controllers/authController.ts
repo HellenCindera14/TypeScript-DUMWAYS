@@ -28,7 +28,7 @@ class AuthController {
       const loginSession = res.locals.loginSession;
       const response = await authService.check(loginSession);
 
-      return res.status(200).json(response);
+      return res.status(200).json(response + "pegecekan berhasil");
     } catch (error) {
       return res
         .status(500)

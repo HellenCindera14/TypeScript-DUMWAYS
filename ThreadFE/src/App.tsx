@@ -1,8 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
 import { BlogDetail } from "./components/BlogDetail";
 import Login from "./layouts/FormLogin";
 import Register from "./layouts/FormRegister";
+// import { useEffect, useState } from "react";
+// import { API, setAuthToken } from "./lib/api";
 
 function App() {
 
@@ -12,8 +14,8 @@ function App() {
   // async function authCheck() {
   //   try {
   //     setAuthToken(localStorage.token);
-  //     const response = await API.get("/auth/check");
-  //     console.log("anda berhasil", response);
+  //     const response = await API.get("/check");
+  //     console.log("authcheck berhasil", response);
   //     setIsLoading(false);
   //   } catch (err) {
   //     localStorage.removeItem("token");
